@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SENSUS NEPANTLA — #DoNotTryToReadThis</title>
+<style>
+:root{--black:#0D0D0D;--dark:#1A1A1A;--cream:#E8E0D0;--terracotta:#C65D3E;--neon:#00B4D8;--caliche:#8B1A1A;--gray-d:#222;--gray-m:#666;--gray-l:#999;--gray-xl:#bbb;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,sans-serif;--mono:Consolas,'Courier New',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:var(--sans);overflow-x:hidden;min-height:100vh;background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.008) 2px,rgba(255,255,255,.008) 4px),repeating-linear-gradient(90deg,transparent,transparent 2px,rgba(255,255,255,.005) 2px,rgba(255,255,255,.005) 4px)}
+::selection{background:var(--terracotta);color:var(--cream)}
+
+/* === HERO === */
+.hero{position:relative;height:65vh;min-height:440px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;background:linear-gradient(170deg,var(--black) 0%,var(--dark) 40%,#111 100%)}
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-bg span{position:absolute;font-family:var(--serif);font-weight:900;white-space:nowrap;text-transform:uppercase;letter-spacing:.02em}
+.hero-bg .d1{font-size:clamp(5rem,18vw,22rem);top:-12%;left:-10%;transform:rotate(-8deg);color:rgba(232,224,208,.03)}
+.hero-bg .d2{font-size:clamp(4rem,14vw,17rem);bottom:-8%;right:-8%;transform:rotate(10deg);color:rgba(198,93,62,.04)}
+.hero-bg .d3{font-size:clamp(3rem,9vw,12rem);top:20%;left:50%;transform:translateX(-50%) rotate(-3deg);color:rgba(0,180,216,.03)}
+.hero-bg .d4{font-size:clamp(2rem,7vw,9rem);top:60%;left:-5%;transform:rotate(5deg);color:rgba(139,26,26,.04)}
+.hero-line{width:80px;height:3px;background:var(--terracotta);margin-bottom:1.8rem;z-index:2}
+.hero-title{font-family:var(--serif);font-size:clamp(2.8rem,8vw,7rem);font-weight:900;letter-spacing:-.03em;line-height:.88;z-index:2;text-transform:uppercase;color:var(--cream)}
+.hero-title .accent{color:var(--terracotta);display:inline-block;transform:rotate(-4deg);margin-left:.3em}
+.hero-sub{font-family:var(--mono);font-size:clamp(.55rem,1.3vw,.8rem);letter-spacing:.3em;text-transform:uppercase;margin-top:1.5rem;z-index:2;opacity:.55;max-width:600px;line-height:1.8}
+.hero-hashtag{font-family:var(--mono);font-size:clamp(.5rem,1vw,.7rem);letter-spacing:.2em;text-transform:uppercase;margin-top:.8rem;z-index:2;color:var(--neon);opacity:.7}
+.hero-grain{position:absolute;inset:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* === MANIFESTO STRIP === */
+.manifesto{background:linear-gradient(180deg,var(--dark) 0%,#111 100%);padding:2.5rem 0;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);overflow:hidden}
+.manifesto-label{max-width:900px;margin:0 auto;padding:0 1rem .8rem;font-family:var(--mono);font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gray-m)}
+.manifesto-strip{display:flex;gap:1.2rem;padding:1rem 1rem 2rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.manifesto-strip::-webkit-scrollbar{display:none}
+.manifesto-card{flex:0 0 280px;min-height:200px;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;scroll-snap-align:start;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);transition:border-color .3s,transform .3s}
+.manifesto-card:hover{border-color:var(--terracotta);transform:translateY(-4px)}
+.manifesto-card .card-num{position:absolute;top:.8rem;right:1rem;font-family:var(--mono);font-size:.5rem;color:var(--gray-m);letter-spacing:.15em}
+.manifesto-card .card-text{font-family:var(--serif);font-size:clamp(1rem,2.5vw,1.4rem);font-weight:900;line-height:1.25;text-transform:uppercase;letter-spacing:-.01em}
+.manifesto-card .card-accent{color:var(--terracotta)}
+.manifesto-card:nth-child(2) .card-accent{color:var(--neon)}
+.manifesto-card:nth-child(3) .card-accent{color:var(--caliche)}
+.manifesto-card:nth-child(4) .card-accent{color:#7CB342}
+.manifesto-card:nth-child(5) .card-accent{color:#D4903E}
+.manifesto-card:nth-child(6) .card-accent{color:var(--neon)}
+.manifesto-closing{max-width:900px;margin:0 auto;padding:1.2rem 1rem 0;text-align:center;font-family:var(--serif);font-size:clamp(.85rem,1.8vw,1.05rem);font-style:italic;color:var(--gray-xl);opacity:.6}
+
+/* === EDITORIAL FILTERS === */
+.editorial-section{background:var(--black);padding:1.2rem 1rem;border-bottom:1px solid rgba(255,255,255,.04)}
+.editorial-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
+.ed-btn{padding:.45rem .9rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--gray-m);background:transparent;color:var(--cream);cursor:pointer;transition:all .2s}
+.ed-btn:hover,.ed-btn.active{background:var(--terracotta);border-color:var(--terracotta);color:var(--cream)}
+.ed-btn .ed-sub{display:block;font-family:var(--serif);font-size:.52rem;font-style:italic;letter-spacing:.05em;margin-top:.2rem;opacity:.6;text-transform:none}
+
+/* === SEARCH === */
+.search-section{background:var(--black);padding:1.5rem 1rem;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(13,13,13,.92)}
+.search-wrap{max-width:650px;margin:0 auto;position:relative}
+.search-wrap input{width:100%;padding:.9rem 2.5rem .7rem 1.2rem;font-family:var(--serif);font-size:1.05rem;border:1px solid var(--gray-m);background:rgba(255,255,255,.03);color:var(--cream);outline:none;transition:border-color .2s}
+.search-wrap input:focus{border-color:var(--terracotta)}
+.search-wrap input::placeholder{color:var(--gray-m);font-style:italic}
+.search-wrap .icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:1rem;opacity:.3;pointer-events:none}
+.results-counter{text-align:center;font-family:var(--mono);font-size:.58rem;color:var(--gray-m);letter-spacing:.15em;margin-top:.5rem;text-transform:uppercase}
+
+/* === MAIN === */
+.main{max-width:860px;margin:0 auto;padding:1.5rem 1rem 4rem}
+
+/* === ENTRY CARD === */
+.entry-card{background:linear-gradient(135deg,rgba(26,26,26,.95),rgba(13,13,13,.98));border:1px solid rgba(255,255,255,.06);margin-bottom:2.5rem;overflow:hidden;position:relative;transition:box-shadow .3s,transform .3s,border-color .3s}
+.entry-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.5);transform:translateY(-3px);border-color:rgba(255,255,255,.12)}
+.entry-card::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%}
+.entry-card:nth-child(1)::before{background:#D4A574}
+.entry-card:nth-child(2)::before{background:#E85D8A}
+.entry-card:nth-child(3)::before{background:#4A90D9}
+.entry-card:nth-child(4)::before{background:#7CB342}
+.entry-card:nth-child(5)::before{background:#D4903E}
+.entry-card:nth-child(6)::before{background:#C65D3E}
+.entry-card:nth-child(7)::before{background:#1565C0}
+.entry-card:nth-child(8)::before{background:#9575CD}
+.entry-card:nth-child(9)::before{background:#B71C1C}
+.entry-card:nth-child(10)::before{background:#00BCD4}
+.entry-card:nth-child(11)::before{background:#795548}
+.entry-card:nth-child(12)::before{background:#FFB300}
+.entry-header{padding:1.5rem 1.5rem .5rem 1.8rem;display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.entry-month{font-family:var(--serif);font-size:1.6rem;font-weight:900;letter-spacing:-.02em;text-transform:uppercase}
+.entry-theme{font-family:var(--serif);font-size:.85rem;font-style:italic;color:var(--gray-xl);opacity:.7}
+.entry-body{padding:0 1.8rem 1.5rem}
+.entry-phrase{font-family:var(--serif);font-size:clamp(1.2rem,3vw,1.8rem);font-weight:900;line-height:1.2;letter-spacing:-.01em;margin-bottom:.8rem}
+.entry-caption{font-family:var(--serif);font-size:clamp(.82rem,1.5vw,.95rem);line-height:1.75;color:var(--gray-xl);opacity:.75;font-style:italic}
+.entry-tags{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.3rem}
+.entry-tag{display:inline-block;font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .4rem;border:1px solid rgba(255,255,255,.1);color:var(--gray-l)}
+.entry-ed-label{display:inline-block;font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .4rem;margin-top:.5rem;border-left:2px solid var(--terracotta);color:var(--terracotta);opacity:.6}
+
+/* === NO RESULTS === */
+.no-results{text-align:center;padding:4rem 1rem;font-family:var(--serif);font-size:1.1rem;color:var(--gray-m)}
+.no-results small{display:block;margin-top:.5rem;font-size:.75rem;opacity:.5}
+
+/* === CONCEPTUAL ANALYSIS === */
+.analysis-section{max-width:860px;margin:2rem auto 3rem;padding:0 1rem}
+.analysis-toggle{width:100%;padding:1rem 1.2rem;font-family:var(--mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(255,255,255,.08);background:rgba(198,93,62,.08);color:var(--terracotta);cursor:pointer;transition:all .2s;text-align:left;display:flex;justify-content:space-between;align-items:center}
+.analysis-toggle:hover{background:rgba(198,93,62,.15)}
+.analysis-toggle .arrow{transition:transform .3s;display:inline-block}
+.analysis-toggle.open .arrow{transform:rotate(180deg)}
+.analysis-body{display:none;padding:1.5rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-top:none}
+.analysis-body.visible{display:block}
+.analysis-body h3{font-family:var(--serif);font-size:1rem;font-weight:900;color:var(--terracotta);margin-bottom:.5rem;margin-top:1.2rem;text-transform:uppercase;letter-spacing:.05em}
+.analysis-body h3:first-child{margin-top:0}
+.analysis-body h4{font-family:var(--mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--neon);margin-bottom:.4rem;margin-top:.8rem}
+.analysis-body p{font-family:var(--serif);font-size:.88rem;line-height:1.75;color:var(--gray-xl);margin-bottom:.6rem}
+.analysis-body .synthesis{margin-top:1.2rem;padding:1rem;border-left:3px solid var(--caliche);background:rgba(139,26,26,.06)}
+.analysis-body .synthesis p{color:var(--cream);opacity:.8}
+
+/* === FOOTER === */
+.footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 1rem;text-align:center;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--gray-m)}
+.footer .logo{font-family:var(--serif);font-size:1.3rem;font-weight:900;color:var(--cream);margin-bottom:.3rem}
+.footer .sub{font-size:.55rem;color:var(--terracotta);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.8rem}
+.footer .hashtag{margin-top:.5rem;color:var(--neon);font-size:.52rem;letter-spacing:.15em}
+
+/* === RESPONSIVE === */
+@media(max-width:600px){
+  .hero{height:50vh;min-height:320px}
+  .hero-sub{padding:0 1rem}
+  .manifesto-card{flex:0 0 240px;min-height:170px;padding:1.2rem}
+  .manifesto-card .card-text{font-size:.95rem}
+  .entry-header{padding:1.2rem 1.2rem .4rem 1.4rem}
+  .entry-month{font-size:1.3rem}
+  .entry-body{padding:0 1.4rem 1.2rem}
+  .entry-phrase{font-size:1.15rem}
+  .main{padding:1rem .8rem 3rem}
+  .ed-btn{padding:.35rem .6rem;font-size:.52rem}
+  .ed-btn .ed-sub{font-size:.46rem}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg">
+    <span class="d1">DONOTTRYTOREADTHIS</span>
+    <span class="d2">NISETEOCURRALEERESTO</span>
+    <span class="d3">BORDERSYNTAX</span>
+    <span class="d4">SENSUSNEPANTLA</span>
+  </div>
+  <div class="hero-grain"></div>
+  <div class="hero-line"></div>
+  <div class="hero-title">SENSUS<br><span class="accent">NEPANTLA</span></div>
+  <div class="hero-sub">diccionario de la frontera ling&uuml;&iacute;stica &mdash; donde el lenguaje se quiebra y renace</div>
+  <div class="hero-hashtag">#DoNotTryToReadThis</div>
+</section>
+
+<section class="manifesto">
+  <div class="manifesto-label">MANIFIESTO LING&Uuml;&Iacute;STICO &mdash; 6 SLIDES</div>
+  <div class="manifesto-strip" id="manifestoStrip">
+    <div class="manifesto-card">
+      <span class="card-num">01 / 06</span>
+      <div class="card-text"><span class="card-accent">ROMPO LA GRAM&Aacute;TICA</span> INGLESA<br>COMO ME ROMPIERON LA LENGUA</div>
+    </div>
+    <div class="manifesto-card">
+      <span class="card-num">02 / 06</span>
+      <div class="card-text"><span class="card-accent">I TWIST IT BACK</span><br>NOW I OWN IT</div>
+    </div>
+    <div class="manifesto-card">
+      <span class="card-num">03 / 06</span>
+      <div class="card-text"><span class="card-accent">GRAMMAR DIED</span><br>IN THE BARRIO</div>
+    </div>
+    <div class="manifesto-card">
+      <span class="card-num">04 / 06</span>
+      <div class="card-text"><span class="card-accent">CALL IT BROKEN</span><br>I CALL IT <span class="card-accent">REBORN</span></div>
+    </div>
+    <div class="manifesto-card">
+      <span class="card-num">05 / 06</span>
+      <div class="card-text"><span class="card-accent">SOY MY LANGUAGE</span><br>TWISTED Y PROUD</div>
+    </div>
+    <div class="manifesto-card">
+      <span class="card-num">06 / 06</span>
+      <div class="card-text" style="color:var(--neon);font-size:clamp(1.4rem,3.5vw,2.2rem)">#DONOTTRYTOREADTHIS</div>
+    </div>
+  </div>
+  <div class="manifesto-closing">We didn't break English. English broke on us.</div>
+</section>
+
+<section class="editorial-section">
+  <div class="editorial-inner" id="editorialNav">
+    <button class="ed-btn active" data-line="all">TODAS<span class="ed-sub">Todas las l&iacute;neas</span></button>
+    <button class="ed-btn" data-line="border-sayings">BORDER SAYINGS<span class="ed-sub">Dichos en tr&aacute;nsito</span></button>
+    <button class="ed-btn" data-line="prosa-nepantlera">PROSA NEPANTLERA<span class="ed-sub">Inspirada en Gloria Anzald&uacute;a</span></button>
+    <button class="ed-btn" data-line="literatura-punk">LITERATURA PUNK<span class="ed-sub">Del lenguaje</span></button>
+    <button class="ed-btn" data-line="humor-fronterizo">HUMOR FRONTERIZO<span class="ed-sub">Albures suaves</span></button>
+  </div>
+</section>
+
+<section class="search-section">
+  <div class="search-wrap">
+    <input type="text" id="searchInput" placeholder="Buscar en Spanglish, english o espa&ntilde;ol..." autocomplete="off" spellcheck="false">
+    <span class="icon">&#x2318;</span>
+  </div>
+  <div class="results-counter" id="counter"></div>
+</section>
+
+<main class="main" id="mainContent"></main>
+
+<div class="analysis-section">
+  <button class="analysis-toggle" id="analysisToggle">
+    <span>SPANGLISH COMO FRONTERA ALGOR&Iacute;TMICA &mdash; AN&Aacute;LISIS CONCEPTUAL</span>
+    <span class="arrow">&#9660;</span>
+  </button>
+  <div class="analysis-body" id="analysisBody">
+    <h3>I. Estructuras Algor&iacute;tmicas</h3>
+    <p>Spanglish funciona como dato fronterizo: un h&iacute;brido ling&uuml;&iacute;stico que los sistemas de Machine Learning capturan, clasifican y, en el proceso, normalizan. Cada code-switch es un glitch en el modelo &mdash; una se&ntilde;al que el algoritmo no puede procesar limpiamente porque fue entrenado en lenguas "puras". El Spanglish revela las fisuras del pensamiento computacional: no hay categor&iacute;a para lo que vive entre dos sistemas.</p>
+    <h4>Thesis</h4>
+    <p>Cuando Google Translate o ChatGPT intentan traducir Spanglish, exponen su incapacidad estructural para entender la frontera como espacio leg&iacute;timo de significado. La "correcci&oacute;n" autom&aacute;tica es, en s&iacute; misma, un acto de colonizaci&oacute;n algor&iacute;tmica: el sistema borra lo que no puede categorizar.</p>
+
+    <h3>II. Plataformas como Espect&aacute;culo Integrado</h3>
+    <p>DoorDash, Uber, TaskRabbit &mdash; plataformas donde el trabajador fronterizo es a la vez productor y producto. El dashboard es la nueva frontera: n&uacute;meros, ratings, tiempos de espera. El lenguaje del algoritmo ("tu tasa de aceptaci&oacute;n es baja") se superpone al lenguaje de la supervivencia ("necesito este viaje para pagar la renta").</p>
+    <h4>Thesis</h4>
+    <p>El trabajador precario experimenta una doble frontera: la geogr&aacute;fica (entre pa&iacute;ses) y la digital (entre el humano y el sistema que lo gestiona). El Spanglish no es solo c&oacute;mo habla &mdash; es c&oacute;mo navega interfaces dise&ntilde;adas sin &eacute;l en mente.</p>
+
+    <h3>III. Biopol&iacute;tica Computacional</h3>
+    <p>CBP One app, reconocimiento facial en la frontera, bases de datos biom&eacute;tricos compartidos entre ICE y palcos de vigilancia. El cuerpo del migrante se convierte en dato: huellas, iris, patrones de movimiento. El Spanglish hablado al micr&oacute;fono del telefono es capturado, transcrito, almacenado.</p>
+    <h4>Thesis</h4>
+    <p>La lengua h&iacute;brida es un riesgo biopol&iacute;tico: marca al hablante como "otro" en los sistemas de clasificaci&oacute;n automatizada. Hablar Spanglish frente a un sistema de IA no es neutral &mdash; es generar un perfil. La resistencia ling&uuml;&iacute;stica es, entonces, resistencia algor&iacute;tmica.</p>
+
+    <div class="synthesis">
+      <h4>S&iacute;ntesis: Dial&eacute;ctica Negativa</h4>
+      <p>Spanglish existe en una tensi&oacute;n irresoluble: es resistencia y captura al mismo tiempo. Cada vez que un hablante code-switchea, desaf&iacute;a las categor&iacute;as del lenguaje est&aacute;ndar. Pero cada vez que ese code-switch es capturado por un sistema de ML, se convierte en dato que refuerza la misma categor&iacute;a que intenta subvertir. La frontera no es solo un lugar geogr&aacute;fico &mdash; es una estructura algor&iacute;tmica que reproduce las mismas din&aacute;micas de poder que existe en el terreno.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="sub">#DoNotTryToReadThis</div>
+  <div class="logo">ENTORNO GREKA</div>
+  <p>SENSUS NEPANTLA &mdash; Diccionario Fronterizo</p>
+  <p style="opacity:.3;margin-top:.3rem">por Rei Garc&iacute;a / Khaos_Liminal &mdash; ENTORNO GREKA project</p>
+  <div class="hashtag">#DoNotTryToReadThis #Nepantla #BorderSyntax</div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+var ENTRIES = [
+  {
+    num:1,
+    month:"Enero",
+    theme:"Iniciaci\u00f3n / Identidad",
+    phrase:"Ni aqu\u00ed ni there, but I start where words cross.",
+    caption:"Empiezo el a\u00f1o en el in-between, donde neither aqu\u00ed ni all\u00e1 tienen la \u00faltima palabra. El Spanglish no es un accident \u2014 es el lugar donde mi identidad se rehace cada vez que hablo. This is not broken language. This is me, crossing.",
+    hashtags:["#BorderBirth","#DoNotTryToReadThis"],
+    color:"#D4A574",
+    line:"border-sayings"
+  },
+  {
+    num:2,
+    month:"Febrero",
+    theme:"Lenguaje / Amor y c\u00f3digo",
+    phrase:"Te amo en beta version.",
+    caption:"El amor en la frontera nunca llega completo \u2014 siempre le faltan patches, siempre est\u00e1 debugging itself. Pero eso no lo hace menos real. Maybe loving in two tongues means accepting that some things only translate as feeling, never as words.",
+    hashtags:["#LoveIsCode","#SpanglishAffection"],
+    color:"#E85D8A",
+    line:"prosa-nepantlera"
+  },
+  {
+    num:3,
+    month:"Marzo",
+    theme:"Migraci\u00f3n / Movimiento",
+    phrase:"No papers, just verbs.",
+    caption:"Cruzar la frontera no es solo un acto del cuerpo \u2014 es un acto del lenguaje. Cada verbo que conjugo en ingl\u00e9s con syntax mexicana es un passport que nadie can revoke. We carry our movement in our mouth, en la manera que torcemos las s\u00edlabas del poder.",
+    hashtags:["#CrossingWords","#NomadSyntax"],
+    color:"#4A90D9",
+    line:"border-sayings"
+  },
+  {
+    num:4,
+    month:"Abril",
+    theme:"Rebeld\u00eda / Primavera punk",
+    phrase:"Grammar is dead, long live the glitch.",
+    caption:"Si la gram\u00e1tica fue dise\u00f1ada para gobernar, el Spanglish es el punk que la rompe desde adentro. Cada mezcla es un mosh pit sem\u00e1ntico donde el sentido sobrevive pero las reglas no. The glitch is not an error \u2014 it's the proof that the system was never complete.",
+    hashtags:["#LinguisticPunk","#DoNotTryToReadThis"],
+    color:"#7CB342",
+    line:"literatura-punk"
+  },
+  {
+    num:5,
+    month:"Mayo",
+    theme:"Memoria / Madre lengua",
+    phrase:"Mi mam\u00e1 me ense\u00f1\u00f3 el Spanglish sin manual.",
+    caption:"En la cocina se hablaba un idioma que no exist\u00eda en ning\u00fan libro pero que era completo, completo como el sabor del mole. My mother tongue is not one tongue \u2014 it's two tangled together, como las ra\u00edces del nopal que crecen donde menos lo esperas.",
+    hashtags:["#MotherTongue","#LenguaViva"],
+    color:"#D4903E",
+    line:"prosa-nepantlera"
+  },
+  {
+    num:6,
+    month:"Junio",
+    theme:"Sol / Calor / Bravura",
+    phrase:"Hot like border asphalt, cool like code-switch.",
+    caption:"El verano en el barrio no se mide en grados \u2014 se mide en cu\u00e1ntas veces cambias de idioma antes del mediod\u00eda. Caliente como el asphalt que quema los tenis, fresco como el switching que te da poder sobre dos mundos. That's border cool: never fully one thing, always hotter for it.",
+    hashtags:["#BarrioSyntax","#ChicanoFire"],
+    color:"#C65D3E",
+    line:"humor-fronterizo"
+  },
+  {
+    num:7,
+    month:"Julio",
+    theme:"Frontera / Independencia",
+    phrase:"Freedom is a borrowed word we remix daily.",
+    caption:"Independence en la frontera no se celebra con fuegos artificiales \u2014 se celebra cada vez que eliges c\u00f3mo hablar despite the rules. Freedom is not given. It's remixed, like everything else we touch. Ni se te ocurra pensar que esta lengua est\u00e1 atrapada.",
+    hashtags:["#WordRebel","#NiSeTeOcurraLeerEsto"],
+    color:"#1565C0",
+    line:"literatura-punk"
+  },
+  {
+    num:8,
+    month:"Agosto",
+    theme:"Dualidad / Silencio",
+    phrase:"Silencio bilingual, ruido ancestral.",
+    caption:"Hay un silencio que solo entiende quien vive entre dos lenguas: el silencio de lo que no se puede traducir. Pero inside that silence lives the loudest noise \u2014 the echo of every word that didn't fit, every phrase that got lost en la frontera del diccionario.",
+    hashtags:["#QuietBorders","#DualTongue"],
+    color:"#9575CD",
+    line:"prosa-nepantlera"
+  },
+  {
+    num:9,
+    month:"Septiembre",
+    theme:"Sangre / Herencia",
+    phrase:"Our accent bleeds history.",
+    caption:"Cada vez que pronunciamos algo \u201cmal\u201d estamos Actually pronunciando history: el eco de generaciones que cruzaron con menos que palabras. The accent is not wrong \u2014 it's the archive of survival. Y si sangra, es porque la herencia nunca es limpia.",
+    hashtags:["#HerenciaLing\u00fc\u00edstica","#ReflejoH\u00edbrido"],
+    color:"#B71C1C",
+    line:"prosa-nepantlera"
+  },
+  {
+    num:10,
+    month:"Octubre",
+    theme:"Fantasma / Glitch",
+    phrase:"Ghosts speak Spanglish in my code.",
+    caption:"Los muertos no hablan s\u00f3lo espa\u00f1ol \u2014 they've been code-switching desde antes de que existiera el t\u00e9rmino. In the glitch of every untranslated phrase there's a ghost trying to say something the algorithm will never parse. Digital brujer\u00eda is real: it lives in the spaces between languages.",
+    hashtags:["#DigitalBrujer\u00eda","#LinguisticSpirit"],
+    color:"#00BCD4",
+    line:"literatura-punk"
+  },
+  {
+    num:11,
+    month:"Noviembre",
+    theme:"Tierra / Muerte / Retorno",
+    phrase:"We bury words to make them reborn.",
+    caption:"November is when the border remembers its dead, and the dead remember their words. Enterramos lo que no se pudo decir en vida, pero la tierra es fertile con lenguas mezcladas. Lo que se entierra regresa hybrid, como el ma\u00edz que crece donde two worlds overlap.",
+    hashtags:["#LenguaMuertaViva","#BorderRituals"],
+    color:"#795548",
+    line:"prosa-nepantlera"
+  },
+  {
+    num:12,
+    month:"Diciembre",
+    theme:"Luz / Futuro / Renacimiento",
+    phrase:"Next year's tongue loading\u2026",
+    caption:"Cerramos el a\u00f1o con la certeza de que next year's vocabulary hasn't been invented yet. El Spanglish is always loading \u2014 siempre un step ahead del diccionario, siempre un beat ahead de la gram\u00e1tica. Whatever comes next, we'll twist it into something that sounds like home.",
+    hashtags:["#FutureSyntax","#HybridFaith"],
+    color:"#FFB300",
+    line:"border-sayings"
+  },
+  {
+  num: 13,
+  month: "Spanglish Subsume Algoritmo",
+  theme: "Reificación digital · Lukács actualizado",
+  phrase: "En las calles de gringolandia el spanglish hackea el código pero el app lo traga entero.",
+  caption: "Trabajo precario en DoorDash gritando Órale carnal mientras el rating nos mide el alma. Espectáculo integrado nos vende amor falso en Reels de migrantes fingidos. Dolor reificado en pixels de frontera eterna, México profundo clona en data centers. Gratitud forzada al jefe virtual que trackea cada paso biopolítico. Poesía albur devota resiste pero nostalgia se monetiza en crypto dreams.",
+  thesis: "Ontología nómada: spanglish no traduce, desarma el logos binario en subsunción sin sujeto.",
+  hashtags: ["SubsunciónAlgorítmica", "ReificaciónDigital", "DoNotTryToReadThis"],
+  color: "C65D3E",
+  line: "cartel-politico",
+  theorists: ["Lukács", "Debord", "Foucault"]
+  },
+  {
+  num: 14,
+  month: "Frontera Code-Switching",
+  theme: "Biopolítica computacional · Agamben",
+  phrase: "Dolor migra con nosotros cruzando el muro digital donde algoritmos nos nombran wetback data.",
+  caption: "Calles llenas de amor precario besando bajo drones de vigilancia CBP. Trabajo en fields de California spanglishando órdenes al foreman gringo. Gastronomía de tacos en food trucks virales pero reificada por Yelp stars. Pedagogía del oprimido enseña albur contra el totalitarismo app. Devoción a la Virgen de Guadalupe pixelada en TikTok prayers.",
+  thesis: "Biopolítica computacional: spanglish como glitch en el panóptico eterno. México resiste en el byte.",
+  hashtags: ["FronteraCode", "WetbackData", "BorderSyntax"],
+  color: "B71C1C",
+  line: "cartel-politico",
+  theorists: ["Agamben", "Tiqqun", "Freire"]
+  },
+  {
+  num: 15,
+  month: "Algoritmo Trucha Border",
+  theme: "Espectáculo integrado · Debord",
+  phrase: "¡Ponte trucha carnal el algoritmo nos come vivo en plataformas de spectacle!",
+  caption: "Migración eterna spanglish gritando en Zoom calls con bosses invisibles. Trabajo sudado en warehouses Amazon donde dolor se datafica. Amor clandestino en chats encriptados evade el tracking. Nostalgia por México profundo se vende en Etsy prints falsos. Poesía callejera albur contra reificación digital.",
+  thesis: "Dialéctica del malestar: gratitud falsa subsume devoción en totalitarismo sin alma algorítmico.",
+  hashtags: ["AlgoritmoTrucha", "SpectacleBorder", "DoNotTryToReadThis"],
+  color: "00BCD4",
+  line: "cartel-politico",
+  theorists: ["Debord", "Baudrillard", "Fromm"]
+  },
+  {
+  num: 16,
+  month: "Reificación Digital Calle",
+  theme: "Vivencia callejera · Bonfil Batalla",
+  phrase: "Calles spanglish vibran con trabajo precario bajo luces de neon gringo.",
+  caption: "Espectáculo integrado nos hace bailar dolor en Lives de Instagram. Amor reificado en swipes de Tinder fronterizo. Biopolítica computacional mide pulsos migrantes en Fitbits baratos. Pedagogía enseña gratitud irónica al oprimido. México eterno albur en graffiti digital.",
+  thesis: "Filosofía del cruce: spanglish des-reifica el código en poesía devota sin sujeto.",
+  hashtags: ["ReificaciónCalle", "NeonGringo", "MéxicoProfundo"],
+  color: "7CB342",
+  line: "cartel-politico",
+  theorists: ["Lukács", "Bonfil Batalla", "Freire"]
+  },
+  {
+  num: 17,
+  month: "Biopolítica Spanglish Hack",
+  theme: "Subsunción algorítmica · Marx actualizado",
+  phrase: "Subsunción algorítmica nos atrapa en loops de migración datafied.",
+  caption: "Gastronomía de street tacos vira en UberEats ratings explotadores. Dolor de frontera se poetiza en corridos AI. Amor devoto resiste el spectacle en calls nocturnos. Nostalgia profunda México clona en cloud servers. Trabajo albur contra el jefe virtual.",
+  thesis: "Ontología del cruce: totalitarismo computacional devorado por spanglish vivencial.",
+  hashtags: ["BiopolíticaHack", "MigraciónDatafied", "SpanglishResiste"],
+  color: "9575CD",
+  line: "cartel-politico",
+  theorists: ["Foucault", "Agamben", "Marx"]
+  },
+  {
+  num: 18,
+  month: "Trabajo Precario Glitch",
+  theme: "Gig economy · Precarización",
+  phrase: "En el trabajo el spanglish glitchea el algoritmo pero nos pagan en crypto migajas.",
+  caption: "Calles llenas de espectáculo donde migrantes somos extras en Reels. Dolor reificado en injury claims denegados. Amor clandestino bajo vigilancia Ring cameras. Gratitud falsa al sistema que nos trackea. Pedagogía del oprimido: albur en los breaks.",
+  thesis: "Biopoder fractal: México profundo eterna en el byte resistente.",
+  hashtags: ["TrabajoPrecario", "CryptoMigajas", "GlitchLaboral"],
+  color: "D4903E",
+  line: "cartel-politico",
+  theorists: ["Freire", "Foucault", "Debord"]
+  },
+  {
+  num: 19,
+  month: "Espectáculo Migrante Amor",
+  theme: "Espectáculo · Mercantilización afectiva",
+  phrase: "Espectáculo integrado vende amor spanglish en Netflix docs falsos.",
+  caption: "Migración dolorosa como data en CBP apps predictivas. Trabajo en construction sites gritando Órale al capataz. Gastronomía fusion traiciona México eterno por Yelp hype. Poesía devota resiste la subsunción. Nostalgia albur contra biopolítica.",
+  thesis: "Crítica inmanente: spanglish desarma el logos del totalitarismo sin sujeto.",
+  hashtags: ["EspectáculoMigrante", "NetflixFrontera", "AmorSubsumido"],
+  color: "E85D8A",
+  line: "cartel-politico",
+  theorists: ["Debord", "Baudrillard", "Anzaldúa"]
+  },
+  {
+  num: 20,
+  month: "Dolor Algorítmico Frontera",
+  theme: "Dialéctica negativa · Adorno",
+  phrase: "Dolor cruza frontera en spanglish codificado que evade parsers.",
+  caption: "Plataformas nos reifican como content migrant low-wage. Trabajo eterno en gig economy sin breaks. Amor devoto en hidden Discords. Gratitud irónica al data lord. México profundo poetiza el malestar cultural.",
+  thesis: "Dialéctica reificada: subsunción algorítmica devorada por vivencia callejera.",
+  hashtags: ["DolorAlgorítmico", "FronteraParser", "NegativeDialectics"],
+  color: "4A90D9",
+  line: "cartel-politico",
+  theorists: ["Adorno", "Fromm", "Freire"]
+  },
+  {
+  num: 21,
+  month: "Gratitud Falsa Data",
+  theme: "Biopoder · Cinco estrellas obligadas",
+  phrase: "Gratitud falsa: el algoritmo nos obliga five stars por migajas.",
+  caption: "Calles spanglish albur contra spectacle bosses. Trabajo doloroso en farms californianas. Amor migrante resiste el tracking. Poesía de México eterno en memes virales. Biopolítica computacional mide devoción en ratings.",
+  thesis: "Ontología del oprimido: spanglish pedagogía contra totalitarismo digital.",
+  hashtags: ["GratitudFalsa", "FiveStarsBiopoder", "RatingAlma"],
+  color: "1565C0",
+  line: "cartel-politico",
+  theorists: ["Foucault", "Freire", "Baudrillard"]
+  },
+  {
+  num: 22,
+  month: "Subsunción Poesía Albur",
+  theme: "Poiesis fronteriza · Resistencia",
+  phrase: "Subsunción algorítmica traga poesía spanglish pero el albur escapa.",
+  caption: "Nostalgia profunda en remesas apps. Gastronomía callejera vira commodity. Dolor amor trabajo en loops eternos. Devoción resiste el code. México vive en el glitch.",
+  thesis: "Filosofía fronteriza: reificación disuelta en devoción sin sujeto.",
+  hashtags: ["SubsunciónPoesía", "AlburResiste", "PoiesisEscape"],
+  color: "FFB300",
+  line: "cartel-politico",
+  theorists: ["Anzaldúa", "Bonfil Batalla", "Deleuze"]
+  },
+  {
+  num: 23,
+  month: "Totalitarismo Sin Spanglish",
+  theme: "Totalitarismo sin sujeto · Baudrillard",
+  phrase: "Totalitarismo sin sujeto nos datafica en biopolítica apps.",
+  caption: "Migración spanglish hackea el sistema con amor callejero. Trabajo precario grita Órale en warehouses. Espectáculo vende dolor como entertainment. Gratitud falsa: pedagogía invertida.",
+  thesis: "Crítica profunda: México eterno albur el algoritmo vacío.",
+  hashtags: ["TotalitarismoSinSujeto", "DataficaciónMigrante", "VacíoAlgorítmico"],
+  color: "795548",
+  line: "cartel-politico",
+  theorists: ["Baudrillard", "Agamben", "Foucault"]
+  },
+  {
+  num: 24,
+  month: "Nostalgia México Code",
+  theme: "México profundo · Playlists AI",
+  phrase: "Nostalgia México profundo se reifica en Spotify playlists AI.",
+  caption: "Calles trabajo dolor amor en spanglish vivo. Plataformas subsumen devoción migrante. Poesía albur contra biopolítica. Gastronomía eterna resiste el Yelp rating.",
+  thesis: "Dialéctica nostalgia: spanglish desarma el spectacle integrado.",
+  hashtags: ["NostalgiaCode", "MéxicoProfundoAI", "PlaylistReificada"],
+  color: "D4A574",
+  line: "cartel-politico",
+  theorists: ["Bonfil Batalla", "Lukács", "Debord"]
+  },
+  {
+  num: 25,
+  month: "Biopolítica Trabajo Calle",
+  theme: "Vigilancia · ICE databases",
+  phrase: "Biopolítica computacional trackea trabajo spanglish en las streets.",
+  caption: "Dolor migratorio como data en ICE databases. Amor devoto evade parsers. Gratitud falsa al gig lord. Pedagogía del oprimido: albur como poesía resistente.",
+  thesis: "Ontología algorítmica: México resiste en el cruce eterno.",
+  hashtags: ["BiopolíticaCalle", "ICEDatabase", "TrackeoMigrante"],
+  color: "8B1A1A",
+  line: "cartel-politico",
+  theorists: ["Agamben", "Foucault", "Tiqqun"]
+  },
+  {
+  num: 26,
+  month: "Migración Digital Dolor",
+  theme: "Cloud frontiers · Dolor datafied",
+  phrase: "Migración digital spanglish duele en cloud frontiers.",
+  caption: "Espectáculo vende historias falsas. Trabajo reificado en apps. Amor nostalgia devoción en chats encriptados. Gastronomía México profunda convertida en commodity.",
+  thesis: "Filosofía del malestar: subsunción devorada por vivencia.",
+  hashtags: ["MigraciónDigital", "CloudFrontera", "DolorDatafied"],
+  color: "00B4D8",
+  line: "cartel-politico",
+  theorists: ["Fromm", "Baudrillard", "Freire"]
+  },
+  {
+  num: 27,
+  month: "Gastronomía Reificada App",
+  theme: "DoorDash dreams · Commodificación",
+  phrase: "Gastronomía spanglish reificada en DoorDash dreams gringos.",
+  caption: "Calles trabajo dolor amor albur. Plataformas trackean devoción. Poesía México eterna en el glitch. Gratitud falsa como biopolítica cotidiana.",
+  thesis: "Crítica inmanente: totalitarismo sin spanglish resistente.",
+  hashtags: ["GastronomíaApp", "DoorDashReificado", "TacosCommodity"],
+  color: "C65D3E",
+  line: "cartel-politico",
+  theorists: ["Lukács", "Marx", "Debord"]
+  },
+];
+
+var searchQuery = "";
+var activeLine = "all";
+
+function esc(s) {
+  var d = document.createElement("div");
+  d.appendChild(document.createTextNode(s));
+  return d.innerHTML;
+}
+
+function getFiltered() {
+  var filtered = [];
+  var q = searchQuery.toLowerCase();
+  for (var i = 0; i < ENTRIES.length; i++) {
+    var e = ENTRIES[i];
+    if (activeLine !== "all" && e.line !== activeLine) continue;
+    if (q) {
+      var haystack = (e.month + " " + e.theme + " " + e.phrase + " " + e.caption + " " + e.hashtags.join(" ")).toLowerCase();
+      if (haystack.indexOf(q) === -1) continue;
+    }
+    filtered.push(e);
+  }
+  return filtered;
+}
+
+function renderEntries() {
+  var filtered = getFiltered();
+  var counter = document.getElementById("counter");
+  counter.textContent = filtered.length + " / " + ENTRIES.length + " entradas";
+
+  var main = document.getElementById("mainContent");
+  if (filtered.length === 0) {
+    main.innerHTML = '<div class="no-results">Nada coincide en la frontera.<small>Try another word. Otra lengua. Otro glitch.</small></div>';
+    return;
+  }
+
+  var html = "";
+  for (var i = 0; i < filtered.length; i++) {
+    var e = filtered[i];
+    var edLabel = "";
+    if (e.line === "border-sayings") edLabel = "Border Sayings &mdash; Dichos en tr&aacute;nsito";
+    else if (e.line === "prosa-nepantlera") edLabel = "Prosa Nepantlera &mdash; Gloria Anzald&uacute;a";
+    else if (e.line === "literatura-punk") edLabel = "Literatura Punk &mdash; Del lenguaje";
+    else if (e.line === "humor-fronterizo") edLabel = "Humor Fronterizo &mdash; Albures suaves";
+
+    html += '<article class="entry-card">';
+    html += '<div class="entry-header">';
+    html += '<span class="entry-month">' + esc(e.month) + '</span>';
+    html += '<span class="entry-theme">' + esc(e.theme) + '</span>';
+    html += '</div>';
+    html += '<div class="entry-body">';
+    html += '<div class="entry-phrase" style="color:' + e.color + '">' + esc(e.phrase) + '</div>';
+    html += '<div class="entry-caption">' + esc(e.caption) + '</div>';
+    html += '<div class="entry-tags">';
+    for (var j = 0; j < e.hashtags.length; j++) {
+      html += '<span class="entry-tag">' + esc(e.hashtags[j]) + '</span>';
+    }
+    html += '</div>';
+    html += '<div class="entry-ed-label">' + edLabel + '</div>';
+    html += '</div>';
+    html += '</article>';
+  }
+  main.innerHTML = html;
+}
+
+function init() {
+  var input = document.getElementById("searchInput");
+  var timer = null;
+
+  input.addEventListener("input", function() {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(function() {
+      searchQuery = input.value.trim();
+      renderEntries();
+    }, 150);
+  });
+
+  var buttons = document.querySelectorAll("#editorialNav .ed-btn");
+  for (var i = 0; i < buttons.length; i++) {
+    (function(btn) {
+      btn.addEventListener("click", function() {
+        for (var j = 0; j < buttons.length; j++) {
+          buttons[j].classList.remove("active");
+        }
+        btn.classList.add("active");
+        activeLine = btn.getAttribute("data-line");
+        renderEntries();
+      });
+    })(buttons[i]);
+  }
+
+  var toggle = document.getElementById("analysisToggle");
+  var body = document.getElementById("analysisBody");
+  toggle.addEventListener("click", function() {
+    if (body.classList.contains("visible")) {
+      body.classList.remove("visible");
+      toggle.classList.remove("open");
+    } else {
+      body.classList.add("visible");
+      toggle.classList.add("open");
+    }
+  });
+
+  renderEntries();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
+
+})();
+</script>
+</body>
+</html>
